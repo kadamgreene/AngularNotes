@@ -36,5 +36,11 @@ An alternative to @Input that allows you to constructor inject the attribute rat
 ### @Self
 Only look in the current components injector for a resolution.  If not found will throw.
 
+### @SkipSelf
+Start looking at this components parent for DI resolution (skip self)
+
 ### @Optional
 The specified constructor parameter can be undefined (not exist in the DI chain used to instantiate the component)
+
+### @Inject
+For cases when Angular cannot figure out the expected types for the constructor parameters, you can explicity specify it. (example:  @Inject(ConsoleLogger) logger: Logger)
