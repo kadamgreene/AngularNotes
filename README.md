@@ -44,3 +44,20 @@ The specified constructor parameter can be undefined (not exist in the DI chain 
 
 ### @Inject
 For cases when Angular cannot figure out the expected types for the constructor parameters, you can explicity specify it. (example:  @Inject(ConsoleLogger) logger: Logger)
+
+## ContentChildren cannot cross <ng-content> boundary
+When you use @ContentChildren(type, { descendents: true }), it won't look inside any <ng-content></ng-content>.  The "descendents" must be defined in the page that contains the component, so this will work:
+
+```HTML
+<div wrapperComponent>
+    <Panel>
+        <Header></Header>
+    </Panel>
+</div>
+```
+
+when used with:
+
+```Typescript
+@ContentChildren(HeaderCompoonent, { descendents: true }) public headers: QueryList<HeaderComponent>
+```
